@@ -1,0 +1,59 @@
+[texture SF_PLAYER]
+imgsrc=media/frog/ranillasheet.png
+
+[texture SF_ENEMY]
+imgsrc=media/frog/manstahsheet.png
+
+[texture SF_FONDO_LAYER1]
+imgsrc=media/frog/layer1.png
+
+[texture SF_FONDO_LAYER2]
+imgsrc=media/frog/layer2.png
+
+[texture SF_FONDO_LAYER3]
+imgsrc=media/frog/layer3.png
+
+[texture SF_FONDO_LAYER4]
+imgsrc=media/frog/layer4.png
+
+[texture SF_FONDO]
+imgsrc=media/frog/fondo.png
+
+[texture SF_ALL]
+imgsrc=media/frog/allset4x.png
+
+
+# Zona de definicion de los spritesheets
+[spritesheet SHEET_FONDO]
+texture=SF_FONDO
+tiles=4,4
+
+[spritesheet SHEET_PLAYER]
+texture=SF_PLAYER
+tiles=4,1
+
+[spritesheet SHEET_ENEMY]
+texture=SF_ENEMY
+tiles=6,1
+
+[spritesheet SHEET_ALL]
+texture=SF_ALL
+tiles=3,1
+
+# Zona de definicion de las animaciones
+[animation ANI_PLAYER_STAND]
+spritesheet=SHEET_PLAYER
+times=1,2,3,4
+steps=0,1,2,3
+
+[animation ANI_ENEMY_STAND]
+spritesheet=SHEET_ENEMY
+steps=0,1,2,3,4,5
+
+[animation ANI_BULLET]
+spritesheet=SHEET_ALL
+steps=1,2
+
+
+
+

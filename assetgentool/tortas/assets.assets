@@ -1,0 +1,37 @@
+[texture SF_TORTAS]
+imgsrc=media/tortas/tortasheet.png
+
+[texture SF_BG]
+imgsrc=media/tortas/bg.png
+
+
+# Zona de definicion de los spritesheets
+[spritesheet SHEET_TORTAS]
+texture=SF_TORTAS
+tiles=4,3
+
+# Zona de definicion de las animaciones
+[animation ANI_PLAYER_WALK]
+spritesheet=SHEET_TORTAS
+times=5,5,5,5
+steps=0,1,2,3
+
+[animation ANI_PLAYER_STAND]
+spritesheet=SHEET_TORTAS
+steps=4
+
+[animation ANI_PLAYER_CROUCH]
+spritesheet=SHEET_TORTAS
+nplays=1
+times = 2,2,2,2
+steps=5,6,7,8
+
+[animation ANI_PLAYER_PUNCH]
+spritesheet=SHEET_TORTAS
+nplays=1
+times=10,10
+steps=9,10
+
+
+
+

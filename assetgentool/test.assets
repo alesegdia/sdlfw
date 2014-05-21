@@ -1,0 +1,62 @@
+Surfaces {
+	{
+		SF_FONDO
+		media/fondo.png 
+	},
+	{
+		SF_PLAYER
+		media/ranillasheet.png
+	},
+}
+
+
+
+		
+[surface SF_PLAYER]
+imgsrc=media/fondo.png
+
+[surface SF_ENEMY]
+imgsrc=media/manstahsheet.png
+
+[surface SF_FONDO]
+imgsrc=media/fondo.png
+
+[surface SF_ALL]
+imgsrc=media/allset.png
+
+
+# Zona de definicion de los spritesheets
+[spritesheet SHEET_FONDO]
+surface=SF_FONDO
+tiles=4,4
+
+[spritesheet SHEET_PLAYER]
+surface=SF_PLAYER
+tiles=5,1
+
+[spritesheet SHEET_ENEMY]
+surface=SF_ENEMY
+tiles=6,1
+
+[spritesheet SHEET_ALL]
+surface=SF_ALL
+tiles=3,1
+
+# Zona de definicion de las animaciones
+[animation ANI_PLAYER_STAND]
+spritesheet=SHEET_PLAYER
+times=14.4,123.2,4214.3,1
+steps=1,2,3,4
+
+[animation ANI_ENEMY_STAND]
+spritesheet=SHEET_ENEMY
+steps=1,2,3,4,5,6
+
+[animation ANI_STATIC]
+spritesheet=SHEET_ALL
+steps=4
+
+
+
+
+
