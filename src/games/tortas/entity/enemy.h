@@ -4,7 +4,7 @@
 #include "../../../core/assets/waveanimator.h"
 #include "../../../core/entity/entitybase.h"
 
-class Enemy : public EntityBase {
+class Enemy : public EntityBase<HOrderScene> {
 public:
 	Enemy ();
 	virtual ~Enemy ();

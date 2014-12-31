@@ -27,6 +27,7 @@ void TortasApp::Setup(int argc, char** argv)
 	efactory = new EntityFactory(asset);
 
 	// init entity world
+	/*
 	inicial = new EntityBase();
 	final = new EntityBase();
 	inicial->Cleanup();
@@ -37,12 +38,14 @@ void TortasApp::Setup(int argc, char** argv)
 	final->Next(NULL);
 	final->Prev(inicial);
 	final->X(1000000);
+	*/
 
+	scene = new HOrderScene( sdlrenderer );
 	// init entities
-	player = efactory->SpawnPlayer(inicial,100,100);
+	//player = efactory->SpawnPlayer(inicial,100,100);
+	player = efactory->SpawnPlayer(NULL,100,100);
 	//Enemy* e = efactory->SpawnEnemy(inicial,600,200);
 
-	renderer->SetRef(inicial);
 
 	//tex=new Texture(sdlrenderer,"media/ranillasheet.png");
 
@@ -73,12 +76,14 @@ void TortasApp::Update(uint32_t delta)
 
 void TortasApp::UpdateEntities(uint32_t time)
 {
+	/*
 	EntityBase* p=inicial;
 	int i=0;
 	for(;p;p=p->Next()) {
 		p->Step();
 		p->DeltaStep(time);
 	}
+	*/
 }
 
 
@@ -88,6 +93,7 @@ void TortasApp::Render()
 	asset->GetTex(assets::SF_BG)->Render(0,0,sdlrenderer);
 	renderer->Render(sdlrenderer);
 
+	/*
     EntityBase* p;
     p=inicial;
     for(;p;) {
@@ -99,7 +105,7 @@ void TortasApp::Render()
         } else {
             p=p->Next();
         }
-	}
+	}*/
 
 }
 
@@ -123,6 +129,7 @@ void TortasApp::HandleEvent(SDL_Event& event)
 
 void TortasApp::Cleanup()
 {
+	/*
 	EntityBase* p=inicial;
 	EntityBase* tmp;
 
@@ -132,7 +139,7 @@ void TortasApp::Cleanup()
 		delete p;
 		p=tmp;
 	}
-
+	*/
 
 	delete efactory;
 	asset->Cleanup();

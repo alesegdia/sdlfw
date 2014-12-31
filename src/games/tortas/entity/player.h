@@ -3,10 +3,11 @@
 
 #include "../../../core/entity/entitybase.h"
 #include "../assets/assets.h"
+#include "../gameinfo.h"
 
 extern assets *g_assets;
 
-class Player : public EntityBase {
+class Player : public EntityBase<HOrderScene> {
 public:
 	Player ();
 	virtual ~Player ();

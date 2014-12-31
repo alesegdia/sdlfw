@@ -17,8 +17,11 @@ private:
 	static const int SCR_HEIGHT = 600;
 
 	// balizas
+	/*
 	EntityBase *inicial;
 	EntityBase *final;
+	*/
+	HOrderScene* scene;
 
 	// gameobjs
 	EntityFactory* efactory;
