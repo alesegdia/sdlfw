@@ -2,9 +2,9 @@
 #define __ENEMY_H__
 
 #include "../../../core/assets/waveanimator.h"
-#include "../../../core/entity/entity.h"
+#include "../../../core/entity/entitybase.h"
 
-class Enemy : public Entity {
+class Enemy : public EntityBase {
 public:
 	Enemy ();
 	virtual ~Enemy ();
@@ -13,7 +13,7 @@ public:
 	void Setup();
 	void Step();
 	void DeltaStep(uint32_t delta);
-	void HandleCollision(Entity* other);
+	void HandleCollision(EntityBase* other);
 	void Cleanup();
 
 private:

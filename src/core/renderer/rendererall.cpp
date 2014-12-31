@@ -1,5 +1,5 @@
 #include "rendererall.h"
-#include "../entity/entity.h"
+#include "../entity/entitybase.h"
 
 RendererAll::RendererAll ()
 {
@@ -13,8 +13,8 @@ RendererAll::~RendererAll ()
 
 void RendererAll::Render(SDL_Renderer* renderer)
 {
-	Entity* p = ref;
-	for(;p;p=p->Next()) {
+	EntityBase<HOrderScene>* p = ref;
+	for(;p;p=p->next) {
 		TryRenderEntity(p, renderer);
 	}
 }

@@ -1,29 +1,33 @@
 #ifndef __COLLISIONS_H__
 #define __COLLISIONS_H__
 
-class Entity;
+#include "../entity/entitybase.h"
+#include "../scene/horderscene.h"
+
 
 class Collisions {
 public:
 	Collisions ();
 	virtual ~Collisions ();
 
-	void SetRoot(Entity* root)
+	void SetRoot(EntityBase<HOrderScene>* root)
 	{ this->root = root; }
 
 	void Process();
 
 private:
 
-	//bool SDLTextureCollision(Entity* a, Entity* b);
+	//bool SDLTextureCollision(EntityBase* a, EntityBase* b);
 
-	Entity* root;
+	EntityBase<HOrderScene>* root;
 };
 
 enum {
     CG_ENEMY,
     CG_PLAYER,
-    CG_BULLET
+    CG_BULLET,
+    CG_SPAWNER,
+    CG_BALIZA
 };
 
 

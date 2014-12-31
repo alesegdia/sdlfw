@@ -1,34 +1,41 @@
-#ifndef __RANDOM_H__
-#define __RANDOM_H__
 
-#include <cstdlib>
-#include <ctime>
 
-class Random {
-public:
-	Random (size_t seed)
-	{
-		srand(seed);
-	}
-	Random ()
-	{
-		srand(time(nullptr));
-	}
+#pragma once
 
-	virtual ~Random ()
-	{
+#include <random>
+#include <stdint.h>
 
-	}
-
-	int get(int min, int max)
-	{
-		int rd =min+rand()%(max-min+1);
-		return rd;
-	}
+class RNG
+{
 
 private:
 
+	std::mt19937 gen;
+	std::uniform_int_distribution<int> intdist;
+	std::uniform_real_distribution<float> floatdist;
+
+public:
+
+	RNG() : floatdist( 0.f, 1.f ) {}
+
+	void seed( uint32_t seed )
+	{
+		gen.seed( seed );
+	}
+
+	int get( int low, int high )
+	{
+		std::uniform_int_distribution<>::param_type newparams( low, high );
+		intdist.param( newparams );
+		return intdist( gen );
+	}
+
+	float get( )
+	{
+		return floatdist( this->gen );
+	}
+
+
+
 };
 
-
-#endif

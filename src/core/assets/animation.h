@@ -25,10 +25,12 @@ public:
 		SDL_Point* center=NULL,					// ... around point
 		SDL_RendererFlip flip = SDL_FLIP_NONE);	// vert/horiz flip
 	void SetFrame(int nframe, int ntile, int time=DEFAULT_ANIM_TIME);
-	float W() { spritesheet->GetTileSize().x; }
-	float H() { spritesheet->GetTileSize().y; }
+	float W() { return spritesheet->GetTileSize().x; }
+	float H() { return spritesheet->GetTileSize().y; }
 	SDL_Rect* GetFrameSrc(int f)
-	{ return spritesheet->GetFrameSrc(f); }
+	{
+		return spritesheet->GetFrameSrc(f);
+	}
 
 private:
 

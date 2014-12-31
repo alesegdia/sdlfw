@@ -118,7 +118,7 @@ void Player::ShootStep(bool spacepress)
     //if(shootrate<0) shootrate=-1;
 }
 
-void Player::HandleCollision(Entity* other)
+void Player::HandleCollision(EntityBase* other)
 {
     //printf("jugadorcol\n");
     if(other->GetCollisionGroup()==CG_ENEMY)

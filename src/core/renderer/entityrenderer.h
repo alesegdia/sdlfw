@@ -1,7 +1,10 @@
 #pragma once
 
 #include <SDL2/SDL.h>
-class Entity;
+#include "../scene/horderscene.h"
+#include "../entity/entitybase.h"
+
+
 
 class EntityRenderer
 {
@@ -10,15 +13,15 @@ public:
 	virtual ~EntityRenderer();
 
 	void Render(SDL_Renderer*);
-	void SetRef(Entity*);
+	void SetRef(EntityBase<HOrderScene>*);
 		// entidad de referencia para el renderer
 
 protected:
-	void TryRenderEntity(Entity*,SDL_Renderer*);
+	void TryRenderEntity(EntityBase<HOrderScene>*,SDL_Renderer*);
 		// chequea si una entidad tiene animación o textura
 		// en cuyo caso, la pinta en el renderer pasado por
 		// parámetro
 
-	Entity* ref;
+	EntityBase<HOrderScene>* ref;
 
 };

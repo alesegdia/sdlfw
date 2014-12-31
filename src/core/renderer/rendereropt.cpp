@@ -1,6 +1,7 @@
 #include "rendereropt.h"
-#include "../entity/entity.h"
+#include "../entity/entitybase.h"
 
+/*
 RendererOpt::RendererOpt ()
 {
 	 // ctor
@@ -18,7 +19,6 @@ void RendererOpt::Render(SDL_Renderer* display)
 	// problema cuando se vaya de un lado a otro, que puede pintarse en una
 	// posicion un jugador y en otra otra segun si la camara esta a la izquierda
 	// o derecha
-	/*
 	Entity* p;
 	float camx = cam->X();
 
@@ -29,10 +29,10 @@ void RendererOpt::Render(SDL_Renderer* display)
 
 	for(p=cam->Prev();camx-p->X()<WinWidth+maxEntityHalfWidth&&p;p=p->Prev())
 		SDL_BlitSurface(p->GetSurface(),p->GetFrame(),display,p->GetRect());
-		*/
 }
 
-void RendererOpt::SetCamera(Entity* cam)
+void RendererOpt::SetCamera(EntityBase* cam)
 {
 	this->cam = cam;
 }
+*/

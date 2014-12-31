@@ -39,7 +39,7 @@ void Enemy::DeltaStep(uint32_t delta)
 	wanimator.Step();
 }
 
-void Enemy::HandleCollision(Entity* other)
+void Enemy::HandleCollision(EntityBase* other)
 {/*
     if(other->GetCollisionGroup()==CG_BULLET) {
         other->Destroy();

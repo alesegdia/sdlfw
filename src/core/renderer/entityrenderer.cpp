@@ -1,5 +1,5 @@
 #include "entityrenderer.h"
-#include "../entity/entity.h"
+#include "../entity/entitybase.h"
 #include "../assets/texture.h"
 #include "../assets/animation.h"
 
@@ -14,7 +14,7 @@ EntityRenderer::~EntityRenderer ()
 }
 
 
-void EntityRenderer::TryRenderEntity(Entity*p,SDL_Renderer*renderer)
+void EntityRenderer::TryRenderEntity(EntityBase<HOrderScene>*p,SDL_Renderer*renderer)
 {
 	SDL_Rect src;
 	Texture* tex = p->GetTexture();
@@ -29,7 +29,7 @@ void EntityRenderer::TryRenderEntity(Entity*p,SDL_Renderer*renderer)
 	}
 }
 
-void EntityRenderer::SetRef(Entity*ref)
+void EntityRenderer::SetRef(EntityBase<HOrderScene>*ref)
 {
 	this->ref=ref;
 }

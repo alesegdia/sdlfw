@@ -1,12 +1,12 @@
 #ifndef __PLAYER_H__
 #define __PLAYER_H__
 
-#include "../../../core/entity/entity.h"
+#include "../../../core/entity/entitybase.h"
 #include "../assets/assets.h"
 
 extern assets *g_assets;
 
-class Player : public Entity {
+class Player : public EntityBase {
 public:
 	Player ();
 	virtual ~Player ();
@@ -14,7 +14,7 @@ public:
 	// entity interface
 	void Setup();
 	void Step();
-	void HandleCollision(Entity* other);
+	void HandleCollision(EntityBase* other);
 	void Cleanup();
 	void ShootStep(bool spacepress);
 

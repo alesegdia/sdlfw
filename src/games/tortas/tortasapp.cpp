@@ -27,8 +27,8 @@ void TortasApp::Setup(int argc, char** argv)
 	efactory = new EntityFactory(asset);
 
 	// init entity world
-	inicial = new Entity();
-	final = new Entity();
+	inicial = new EntityBase();
+	final = new EntityBase();
 	inicial->Cleanup();
 	final->Cleanup();
 	inicial->Next(final);
@@ -73,7 +73,7 @@ void TortasApp::Update(uint32_t delta)
 
 void TortasApp::UpdateEntities(uint32_t time)
 {
-	Entity* p=inicial;
+	EntityBase* p=inicial;
 	int i=0;
 	for(;p;p=p->Next()) {
 		p->Step();
@@ -88,11 +88,11 @@ void TortasApp::Render()
 	asset->GetTex(assets::SF_BG)->Render(0,0,sdlrenderer);
 	renderer->Render(sdlrenderer);
 
-    Entity* p;
+    EntityBase* p;
     p=inicial;
     for(;p;) {
         if(p->IsDestroyed()) {
-            Entity* tmp = p->Next();
+            EntityBase* tmp = p->Next();
             p->FreeFromWorld();
             p->Cleanup();
             p=tmp;
@@ -123,8 +123,8 @@ void TortasApp::HandleEvent(SDL_Event& event)
 
 void TortasApp::Cleanup()
 {
-	Entity* p=inicial;
-	Entity* tmp;
+	EntityBase* p=inicial;
+	EntityBase* tmp;
 
 	while(p) {
 		tmp=p->Next();

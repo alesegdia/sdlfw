@@ -1,5 +1,6 @@
 #include "collisions.h"
-#include "../entity/entity.h"
+#include "../entity/entitybase.h"
+#include "../scene/horderscene.h"
 
 Collisions::Collisions ()
 {
@@ -14,26 +15,26 @@ Collisions::~Collisions ()
 
 void Collisions::Process()
 {
-	Entity* e1, *e2;
+	EntityBase<HOrderScene>* e1, *e2;
 	e1 = root;
-	for(;e1;e1=e1->Next()) {
+	for(;e1;e1=e1->next) {
 		// check forward
-		e2=e1->Next();
+		e2=e1->next;
 		if(e2){
-		for(;e2&&e2->X()-e1->HalfWidth()>0;e2=e2->Next()) {
+		for(;e2&&e2->X()-e1->HalfWidth()>0;e2=e2->next) {
 			if(e2 && e1!=e2 && e1->CollideWith(e2)){//e1->colmask & e2->colmask && CheckCollision(e1,e2))
-				printf("COL1: %d contra %d\n",e1->GetCollisionGroup(),e2->GetCollisionGroup());
+				//printf("COL1: %d contra %d\n",e1->GetCollisionGroup(),e2->GetCollisionGroup());
 				e1->HandleCollision(e2);
 			}
 		}}
 
 		// check backwards
-		e2=e1->Prev();
+		e2=e1->prev;
 		if(e2) {
-		for(;e2&&e1->HalfWidth()-e2->X()>0;e2=e2->Prev())
+		for(;e2&&e1->HalfWidth()-e2->X()>0;e2=e2->prev)
 			//printf("overjiar\n");
 			if(e2 && e1!=e2 && e1->CollideWith(e2)) {// e1->colmask & e2->colmask && CheckCollision(e1,e2))
-				printf("COL2: %d contra %d\n",e1->GetCollisionGroup(),e2->GetCollisionGroup());
+				//printf("COL2: %d contra %d\n",e1->GetCollisionGroup(),e2->GetCollisionGroup());
 				e1->HandleCollision(e2);
 			}
 		}
@@ -41,7 +42,7 @@ void Collisions::Process()
 }
 
 /*
-bool Collisions::SDLTextureCollision(Entity* a, Entity* b)
+bool Collisions::SDLTextureCollision(EntityBase* a, EntityBase* b)
 {
 	SDL_Texture* a_tex = a->GetTexture();
 	SDL_Texture* b_tex = b->GetTexture();

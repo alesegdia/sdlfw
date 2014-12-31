@@ -1,6 +1,7 @@
 #include "camera.h"
 
-void Camera::SetEntityRef(Entity* e)
+/*
+void Camera::SetEntityRef(EntityBase* e)
 {
 	ref=e;
 }
@@ -10,3 +11,4 @@ void Camera::Step()
 {
 
 }
+*/

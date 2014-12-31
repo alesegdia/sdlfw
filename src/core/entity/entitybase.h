@@ -5,24 +5,28 @@
 #include "../math/vec2.h"
 #include "../util/timer.h"
 #include "../assets/animation.h"
-#include <vector>
+//#include <vector>
 
-class Entity
+
+template <typename SceneNode>
+class EntityBase : public SceneNode::Node
 {
 private:
-	// Entity linked list
-	Entity* next;
-	Entity* prev;
+
+	// EntityBase linked list
+	/*
+	EntityBase* next;
+	EntityBase* prev;
+	*/
 	bool destroyed;
 
 	static const int MAX_ENTITY_HALFWIDTH = 100;
-
-
 
 protected:
 
 	// chapuzas
 	bool lookLeft;		// para hacer el flip en el renderer, pensar algo mejor
+	bool movedSinceLastFrame;
 
 	// void LoadAnim(int animID);
 
@@ -35,53 +39,73 @@ protected:
 	AABB aabb;
 	uint8_t cmask;
 	Vec2 speed;
-	int collisionGroup;
 
 	// life
 	int health;
 
 
 public:
-	Entity();
-	~Entity();
+
+
+	EntityBase() { Reset(); }
+	virtual ~EntityBase() {}
 
 	// assets
 	//static void SetAssets(assets* as);
 
 	// entity interface
-	virtual void Setup();
-	virtual void Step();
-	virtual void DeltaStep(uint32_t delta);
-	virtual void HandleCollision(Entity* other);
-	virtual void Cleanup();
+	int collisionGroup;
+	virtual void Setup(){}
+	virtual void Step(){}
+	virtual void DeltaStep(uint32_t delta){}
+	virtual void HandleCollision(EntityBase<SceneNode>* other){}
+	virtual void Cleanup(){}
+
+	// base entity reset
+	void Reset(){
+		anim=NULL;
+		destroyed=false;
+		movedSinceLastFrame = false;
+		tex=NULL;
+		lookLeft=false;
+	}
 
 	// graphics
-	void LoadTexture(Texture* tex);               // para entidades estaticas, sin animacion
-    void LoadAnimation(Animation* anim);
+	void LoadTexture(Texture* tex)               // para entidades estaticas, sin animacion
+	{
+		this->tex = tex;
+		aabb.SetSize(tex->W(),tex->H());
+	}
+    void LoadAnimation(Animation* anim)
+	{
+		this->anim = anim;
+		animdata.Reset(anim);
+		aabb.SetSize(anim->W(), anim->H());
+	}
 
 	Texture* GetTexture() { return tex; }
 	Animation* GetAnim() { return anim; }
 	const Animation::Data& GetAnimData() { return animdata; }
 	//void ResetAnimData() { animdata.Reset(anim); }
-	void AnimationStep();
+	void AnimationStep(){anim->Update(animdata);}
 	void CycleAnim();
 	  //aabb.SetSize(anim->W(),anim->H()); }
 
 	// physics
-	void Place(int x, int y) { aabb.Place(x,y); RecheckPosition(); }
+	void Place(int x, int y) { aabb.Place(x,y); movedSinceLastFrame = true; }
 	float X() { return aabb.X(); }
 	float Y() { return aabb.Y(); }
 	void X(float x) { Place(x,Y()); }
 	void Y(float y) { Place(X(),y); }
-	void Move(float x, float y) { aabb.Move(x,y); RecheckPosition(); }
+	void Move(float x, float y) { aabb.Move(x,y); movedSinceLastFrame = true; }
 	void ApplySpeed(int x, int y) { aabb.Move(x*speed.x,y*speed.y); }
 	float W() { return aabb.W(); }
 	float H() { return aabb.H(); }
 	float HalfWidth() { return aabb.HalfWidth(); }
-	float DistanciaX(Entity* e) { return abs(X()-e->X()); }
+	float DistanciaX(EntityBase* e) { return abs(X()-e->X()); }
 	void SetColmask(uint8_t c)
 	{ cmask = c; }
-	bool CollideWith(Entity* other)
+	bool CollideWith(EntityBase* other)
 	{ return aabb.intersects(other->aabb); }
 	void SetCollisionGroup(int cgroup)
 	{ collisionGroup=cgroup; }
@@ -104,25 +128,13 @@ public:
 	static int MaxHalfWidth()
 	{ return MAX_ENTITY_HALFWIDTH; }
 
-	// INPUT: reference entity
-	void AddToWorld(Entity*);
-   	void FreeFromWorld();
-	void Destroy();
-	bool IsDestroyed();
-
-    // list handling
-	void RecheckPosition();
-	void InsertForward(Entity*);
-	void InsertBackward(Entity*);
-	Entity* Next()
-	{ return next; }
-	Entity* Prev()
-	{ return prev; }
-	void Next(Entity* e)
-	{ next = e; }
-	void Prev(Entity* e)
-	{ prev = e; }
+	void Destroy() { destroyed = true; }
+	bool IsDestroyed(){ return destroyed;}
+	bool MovedSinceLastFrame() { return movedSinceLastFrame; }
+	void ClearMoved(){ movedSinceLastFrame = false; }
 
 };
 
-//assets* Entity::ass = NULL;
+//assets* EntityBase::ass = NULL;
+
+//#include "entitybase_impl.h"

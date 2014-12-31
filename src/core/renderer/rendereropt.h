@@ -1,9 +1,10 @@
 #ifndef __RENDEREROPT_H__
 #define __RENDEREROPT_H__
 
+/*
 #include <SDL2/SDL.h>
 
-class Entity;
+class EntityBase;
 
 class RendererOpt  {
 public:
@@ -11,13 +12,13 @@ public:
 	virtual ~RendererOpt ();
 
 	void Render(SDL_Renderer*);
-	void SetCamera(Entity*);
+	void SetCamera(EntityBase*);
 
 private:
-	Entity* cam;
+	EntityBase* cam;
 	static const size_t maxEntityHalfWidth = 32;
 };
 
-
+*/
 #endif
 

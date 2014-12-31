@@ -3,6 +3,7 @@
 
 #include "entityrenderer.h"
 
+/*
 class DebugRenderer : public EntityRenderer {
 public:
 	DebugRenderer ();
@@ -11,7 +12,7 @@ public:
 	void Render(SDL_Renderer*);
 
 };
-
+*/
 
 #endif
 

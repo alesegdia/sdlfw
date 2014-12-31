@@ -7,6 +7,8 @@
 #include "../../core/renderer/rendererall.h"
 #include "../../core/assets/spritesheet.h"
 
+
+
 class TortasApp : public SDLApp {
 
 private:
@@ -15,8 +17,8 @@ private:
 	static const int SCR_HEIGHT = 600;
 
 	// balizas
-	Entity *inicial;
-	Entity *final;
+	EntityBase *inicial;
+	EntityBase *final;
 
 	// gameobjs
 	EntityFactory* efactory;

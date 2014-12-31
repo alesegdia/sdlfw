@@ -1,14 +1,16 @@
 #pragma once
 
-#include "entity.h"
+#include "entitybase.h"
 
-class Camera : public Entity
+/*
+class Camera : public EntityBase
 {
 private:
-	Entity* ref;
+	EntityBase* ref;
 
 public:
 	void Step();
-	void SetEntityRef(Entity* e);
+	void SetEntityRef(EntityBase* e);
 
 };
+*/

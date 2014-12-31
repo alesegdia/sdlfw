@@ -17,7 +17,7 @@ EntityFactory::~EntityFactory ()
 }
 
 
-Player* EntityFactory::SpawnPlayer(Entity* e, float x, float y)
+Player* EntityFactory::SpawnPlayer(EntityBase* e, float x, float y)
 {
 	Player* player = Request<Player>();
 
@@ -35,7 +35,7 @@ Player* EntityFactory::SpawnPlayer(Entity* e, float x, float y)
 	return player;
 }
 
-Enemy* EntityFactory::SpawnEnemy(Entity* e, float x, float y)
+Enemy* EntityFactory::SpawnEnemy(EntityBase* e, float x, float y)
 {
 //	Enemy* enemy = Request<Enemy>();
 //	//enemy->LoadSpritesheet(surfaces->GetSurface(SF_ENEMY),6,DEFAULT_ANIM_TIME);

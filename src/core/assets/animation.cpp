@@ -1,4 +1,6 @@
 #include "animation.h"
+#include <vector>
+#include "spritesheet.h"
 
 Animation::Animation (int nframes, Spritesheet* tset, int nplays)
 {
@@ -49,7 +51,7 @@ void Animation::Render(
 		*/
 }
 
-void Animation::Update(Data& d)
+void Animation::Update(Animation::Data& d)
 {
 	//printf(">%d\n",frames[0]);
 	bool play=true;

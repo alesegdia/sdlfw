@@ -5,15 +5,15 @@
 #include "../assets/assets.h"
 #include <stdint.h>
 
-class Entity;
+class EntityBase;
 
 class EntityFactory {
 public:
 	EntityFactory (assets*);
 	virtual ~EntityFactory ();
 
-	Player* SpawnPlayer (Entity* e, float x, float y);
-	Enemy* SpawnEnemy(Entity* e,float x,float y);
+	Player* SpawnPlayer (EntityBase* e, float x, float y);
+	Enemy* SpawnEnemy(EntityBase* e,float x,float y);
 
 private:
 	static const uint32_t DEFAULT_ANIM_TIME = 100;

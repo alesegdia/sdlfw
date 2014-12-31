@@ -22,6 +22,18 @@ imgsrc=media/frog/fondo.png
 [texture SF_ALL]
 imgsrc=media/frog/allset4x.png
 
+[texture SF_SCROLLBG]
+imgsrc=media/frog/0CaveBack2.png
+
+[texture SF_ROCK1]
+imgsrc=media/frog/mushrock0.png
+
+[texture SF_ROCK2]
+imgsrc=media/frog/mushRock1.png
+
+[texture SF_ROCK3]
+imgsrc=media/frog/mushRock2.png
+
 
 # Zona de definicion de los spritesheets
 [spritesheet SHEET_FONDO]
