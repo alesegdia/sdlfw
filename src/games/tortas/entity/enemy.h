@@ -3,6 +3,7 @@
 
 #include "../../../core/assets/waveanimator.h"
 #include "../../../core/entity/entitybase.h"
+#include "../../../core/scene/horderscene.h"
 
 class Enemy : public EntityBase<HOrderScene> {
 public:
@@ -13,7 +14,7 @@ public:
 	void Setup();
 	void Step();
 	void DeltaStep(uint32_t delta);
-	void HandleCollision(EntityBase* other);
+	void HandleCollision(Entity* other);
 	void Cleanup();
 
 private:
