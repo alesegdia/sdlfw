@@ -46,6 +46,8 @@ HOrderScene::~HOrderScene()
 		delete cur;
 		cur = next;
 	}
+	delete collisions;
+	delete renderer;
 }
 
 void HOrderScene::FreeFromWorld( EntityBase<HOrderScene>* n )
@@ -65,7 +67,7 @@ void HOrderScene::AddEntity( EntityBase<HOrderScene>* e )
 	// acceso directo y/o hacer una busqueda binaria.
 	// De esta forma sabremos el indice en el array de una entidad
 	// sabiendo su direccion pool[(entidad - base)]
-	EntityBase<HOrderScene>* toadd = new EntityBase<HOrderScene>();
+	EntityBase<HOrderScene>* toadd;
 	toadd = e;
 	EntityBase<HOrderScene>* p=inicial;
 	//printf("ADDIN'\n");

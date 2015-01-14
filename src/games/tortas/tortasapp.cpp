@@ -144,6 +144,7 @@ void TortasApp::Cleanup()
 	}
 	*/
 
+	delete scene;
 	delete efactory;
 	asset->Cleanup();
 	delete asset;
