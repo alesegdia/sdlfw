@@ -11,7 +11,7 @@ typedef EntityBase<HOrderScene> GameEntity;
 
 class EntityFactory {
 public:
-	EntityFactory (assets*);
+	EntityFactory (assets*, HOrderScene* scene);
 	virtual ~EntityFactory ();
 
 	Player* SpawnPlayer (GameEntity* e, float x, float y);
@@ -20,6 +20,7 @@ public:
 private:
 	static const uint32_t DEFAULT_ANIM_TIME = 100;
 	assets* asset;
+	HOrderScene* scene;
 
 	template <typename EType>
 	EType* Request() { return new EType(); }

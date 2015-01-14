@@ -4,8 +4,9 @@
 #include "../../../core/assets/waveanimator.h"
 #include "../../../core/entity/entitybase.h"
 #include "../../../core/scene/horderscene.h"
+#include "../gameinfo.h"
 
-class Enemy : public EntityBase<HOrderScene> {
+class Enemy : public GameEntity {
 public:
 	Enemy ();
 	virtual ~Enemy ();
@@ -14,7 +15,7 @@ public:
 	void Setup();
 	void Step();
 	void DeltaStep(uint32_t delta);
-	void HandleCollision(Entity* other);
+	void HandleCollision(GameEntity* other);
 	void Cleanup();
 
 private:

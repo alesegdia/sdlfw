@@ -6,9 +6,10 @@
 #include "../assets/assets.h"
 
 
-EntityFactory::EntityFactory (assets* as)
+EntityFactory::EntityFactory (assets* as, HOrderScene* scene)
 {
 	 this->asset=as;
+	 this->scene = scene;
 }
 
 EntityFactory::~EntityFactory ()
@@ -17,12 +18,13 @@ EntityFactory::~EntityFactory ()
 }
 
 
-Player* EntityFactory::SpawnPlayer(EntityBase* e, float x, float y)
+Player* EntityFactory::SpawnPlayer(GameEntity* e, float x, float y)
 {
-	Player* player = Request<Player>();
+	Player* player = new Player(); //Request<Player>();
+	player->Cleanup();
 
 	//player->LoadTexture(asset->GetTex(assets::SF_PLAYER));
-	player->LoadAnimation(asset->GetAnim(assets::ANI_PLAYER_STAND));
+	player->LoadAnimation(this->asset->GetAnim(assets::ANI_PLAYER_STAND));
 	player->SetHealth(15);
 	player->Place(50,500);  // WTF?!?!?!?!? PASAR X E Y!!! JODERRR!!
 	player->SetCollisionGroup(CG_PLAYER);
@@ -31,11 +33,11 @@ Player* EntityFactory::SpawnPlayer(EntityBase* e, float x, float y)
 
 	//Animation anim = new Animation(4,)
 
-	player->AddToWorld(e);
+	//player->AddToWorld(e);
 	return player;
 }
 
-Enemy* EntityFactory::SpawnEnemy(EntityBase* e, float x, float y)
+Enemy* EntityFactory::SpawnEnemy(GameEntity* e, float x, float y)
 {
 //	Enemy* enemy = Request<Enemy>();
 //	//enemy->LoadSpritesheet(surfaces->GetSurface(SF_ENEMY),6,DEFAULT_ANIM_TIME);

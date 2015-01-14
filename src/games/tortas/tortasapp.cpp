@@ -18,13 +18,17 @@ TortasApp::~TortasApp()
 
 void TortasApp::Setup(int argc, char** argv)
 {
-	// init core objects
-	renderer = new RendererAll();
+	scene = new HOrderScene( sdlrenderer );
 
 	// init factory & assets
 	asset = new assets(sdlrenderer);
+	efactory = new EntityFactory(asset, scene);
 	g_assets=asset;
-	efactory = new EntityFactory(asset);
+
+	// init core objects
+	renderer = new RendererAll();
+
+	player = efactory->SpawnPlayer(NULL,100,100);
 
 	// init entity world
 	/*
@@ -40,10 +44,8 @@ void TortasApp::Setup(int argc, char** argv)
 	final->X(1000000);
 	*/
 
-	scene = new HOrderScene( sdlrenderer );
 	// init entities
 	//player = efactory->SpawnPlayer(inicial,100,100);
-	player = efactory->SpawnPlayer(NULL,100,100);
 	//Enemy* e = efactory->SpawnEnemy(inicial,600,200);
 
 
@@ -56,6 +58,7 @@ void TortasApp::Update(uint32_t delta)
 {
 	if (keyboard[SDLK_ESCAPE])
 		Stop();
+	scene->Step(delta);
     //printf("VIDA PLAYER: %d", player->GetHealth());
     //if (player->GetHealth()==0) Stop();
 
