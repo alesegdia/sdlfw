@@ -22,11 +22,11 @@ void TortasApp::Setup(int argc, char** argv)
 
 	// init factory & assets
 	asset = new assets(sdlrenderer);
-	efactory = new EntityFactory(asset, scene);
 	g_assets=asset;
+	efactory = new EntityFactory(asset, scene);
 
 	// init core objects
-	renderer = new RendererAll();
+	//renderer = new RendererAll();
 
 	player = efactory->SpawnPlayer(NULL,100,100);
 
@@ -58,14 +58,13 @@ void TortasApp::Update(uint32_t delta)
 {
 	if (keyboard[SDLK_ESCAPE])
 		Stop();
-	scene->Step(delta);
     //printf("VIDA PLAYER: %d", player->GetHealth());
     //if (player->GetHealth()==0) Stop();
 
 	// perform collisions
 
 	// DESPUES DE COLISIONES!
-	UpdateEntities(delta);
+	deltatime = delta;
 
 	/*
 	Entity*p=inicial;
@@ -94,7 +93,8 @@ void TortasApp::Render()
 {
 	// render entities
 	asset->GetTex(assets::SF_BG)->Render(0,0,sdlrenderer);
-	renderer->Render(sdlrenderer);
+	scene->Step(deltatime);
+	//renderer->Render(sdlrenderer);
 
 	/*
     EntityBase* p;

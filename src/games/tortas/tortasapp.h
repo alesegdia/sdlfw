@@ -34,6 +34,7 @@ private:
 	// assets
 	assets* asset;
 
+	uint32_t deltatime;
 
 public:
 	TortasApp () :

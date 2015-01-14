@@ -43,6 +43,7 @@ void Player::Step()
 	down = keystate[SDL_SCANCODE_DOWN];
 	punch = keystate[SDL_SCANCODE_A];
 
+	printf("%f, %f\n", X(), Y());
 	if(state==STATE_WALKING) {
 		if(!left&&!right&&!jump) {
 			LoadState(STATE_STAND,assets::ANI_PLAYER_STAND);
@@ -64,7 +65,7 @@ void Player::Step()
 			LoadState(STATE_PUNCH, assets::ANI_PLAYER_PUNCH);
 		}
 	} else if(state==STATE_JUMP) {
-		printf("%f\n",Y());
+		//printf("%f\n",Y());
 		dy += impulso;
 		impulso += PLAYER_JUMP_GRAVITY;
 		if(dy+Y()>=ypos) {
@@ -98,7 +99,8 @@ void Player::Step()
 	}
 
 	//printf("%f\n",x);
-	aabb.Move(dx,dy);
+	//aabb.Move(dx,dy);
+	Move(dx,dy);
 
 	//Move(x,y);
 	// check input

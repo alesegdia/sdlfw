@@ -23,13 +23,13 @@ Player* EntityFactory::SpawnPlayer(GameEntity* e, float x, float y)
 	Player* player = new Player(); //Request<Player>();
 	player->Cleanup();
 
-	//player->LoadTexture(asset->GetTex(assets::SF_PLAYER));
-	player->LoadAnimation(this->asset->GetAnim(assets::ANI_PLAYER_STAND));
+	player->LoadTexture(asset->GetTex(assets::SF_TORTAS));
+	//player->LoadAnimation(this->asset->GetAnim(assets::ANI_PLAYER_STAND));
 	player->SetHealth(15);
 	player->Place(50,500);  // WTF?!?!?!?!? PASAR X E Y!!! JODERRR!!
 	player->SetCollisionGroup(CG_PLAYER);
 	player->Setup();
-
+	scene->AddEntity( player );
 
 	//Animation anim = new Animation(4,)
 
